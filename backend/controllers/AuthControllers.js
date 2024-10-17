@@ -21,18 +21,24 @@ function register(req, res) {
         req.flash('name', name)
         req.flash('email', email)
        return res.redirect('/register')
-    // return res.send("All fields are required")
+    
+    }
+    try {
+        // Use await for asynchronous operations
+        const userExists = await User.exists({ email: email });
+
+        if (userExists) {
+            req.flash('error', 'Email already taken');
+            req.flash('name', name);
+            req.flash('email', email);
+            return res.redirect('/register');  // Return to stop further execution
+        }
+
+    } catch (err) {
+        // Handle any errors
+        return next(err);  // Pass the error to the error-handling middleware
     }
 
-    User.exists({ email: email }, (err, result) => {
-        if(result) {
-           req.flash('error', 'Email already taken')
-           req.flash('name', name)
-           req.flash('email', email) 
-           return res.redirect('/register')
-        // return res.send("user already exists")
-        }
-    })
 
     const hashedPassword = await bcrypt.hash(password, 10)
 
