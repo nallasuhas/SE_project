@@ -1,4 +1,4 @@
-const { json } = require("express")
+ const { json } = require("express")
 
 function index(req, res){
     res.render('customers/cart')

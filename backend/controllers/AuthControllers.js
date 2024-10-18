@@ -1,6 +1,6 @@
 const User = require('../models/users.js')
 const bcrypt = require('bcrypt')
-const passport = require('passport')
+const passport = require('../Auth/passport.js')
 
 const _getRedirectUrl = (req) => {
     return req.user.role === 'admin' ? '/admin/orders' : '/customer/orders'
@@ -69,11 +69,12 @@ function postLogin(req, res,next){
         return res.redirect('/login')
     }
     passport.authenticate('local', (err, user, info) => {
-        if(err){
+        if(err){  
             req.flash('error', info.message)
             return next(err)
         }
         if(!user) {
+            console.log(info.message);
             req.flash('error', info.message )
             return res.redirect('/login')
         }
@@ -85,13 +86,20 @@ function postLogin(req, res,next){
 
             return res.redirect(_getRedirectUrl(req))
         })
-    })
+    })(req, res, next)
 }
 // logout
 function logout(req, res) {
-    req.logout()
-    return res.redirect('/login')  
-  }
+    req.logout((err) => {
+        if (err) {
+            // Handle the error if needed
+            console.error('Logout error:', err);
+            return res.status(500).send('Could not log out. Please try again.');
+        }
+        return res.redirect('/login'); // Redirect after successful logout
+    });
+}
+
 
 
 module.exports = {postRegister, register, postLogin, login, logout}

@@ -7,10 +7,11 @@ const mongoose = require('mongoose')
 const expressLayout = require('express-ejs-layouts')
 const session = require('express-session')
 const flash = require('express-flash')
-const passport = require('passport')
+const passport = require('./Auth/passport.js')
 const Emitter = require('events')
 const MongoDbStore = require('connect-mongo')
 const router = require('./routes/web.js')
+const { log } = require("console")
 
 
 
@@ -44,10 +45,10 @@ app.use(session({
 
 }))
 
-const passportInit = require('./Auth/passport.js')
-passportInit(passport)
+
 app.use(passport.initialize())
 app.use(passport.session())
+
 
 app.use(flash())
 
