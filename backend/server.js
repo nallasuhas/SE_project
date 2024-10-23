@@ -11,7 +11,7 @@ const passport = require('./Auth/passport.js')
 const Emitter = require('events')
 const MongoDbStore = require('connect-mongo')
 const router = require('./routes/web.js')
-const { log } = require("console")
+
 
 
 
@@ -32,6 +32,9 @@ const PORT = process.env.PORT || 3000
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+
+const eventEmitter = new Emitter();
+app.set('eventEmitter', eventEmitter)
 
 
 app.use(session({
@@ -63,7 +66,24 @@ app.set('views', path.join(__dirname, '/views'))
 app.set('view engine', 'ejs')
 
 app.use('/', router)
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     connectDB()
     console.log("server started at:", PORT);
+})
+
+const io = require('socket.io')(server)
+
+io.on('connection', (socket) => {
+   
+    socket.on('join', (orderId) => {
+        socket.join(orderId)
+    })
+})
+
+eventEmitter.on('orderUpdated', (data) => {
+    io.to(`order_${data.id}`).emit('orderUpdated', data)
+})
+
+eventEmitter.on('orderPlaced', (data) => {
+    io.to('adminRoom').emit('orderPlaced', data)
 })
