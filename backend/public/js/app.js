@@ -32742,11 +32742,16 @@ var statuses = document.querySelectorAll('.status_line');
 var hiddenInput = document.querySelector('#hiddenInput');
 var order = hiddenInput ? hiddenInput.value : null;
 order = JSON.parse(order);
-var time = document.createElement('small');
 function updateStatus(order) {
   statuses.forEach(function (status) {
     status.classList.remove('step-completed');
     status.classList.remove('current');
+
+    // Remove any previous timestamps to avoid duplicates
+    var existingTime = status.querySelector('small');
+    if (existingTime) {
+      existingTime.remove();
+    }
   });
   var stepCompleted = true;
   statuses.forEach(function (status) {
@@ -32756,6 +32761,9 @@ function updateStatus(order) {
     }
     if (dataProp === order.status) {
       stepCompleted = false;
+
+      // Create a new time element for this specific status
+      var time = document.createElement('small');
       time.innerText = moment__WEBPACK_IMPORTED_MODULE_3___default()(order.updatedAt).format('hh:mm A');
       status.appendChild(time);
       if (status.nextElementSibling) {
