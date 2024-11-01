@@ -18,10 +18,15 @@ const router = require('./routes/web.js')
 
 const PORT = process.env.PORT || 3000
 
+const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
+
  const connectDB = async () => {
+    
     try{
-         const con =  await mongoose.connect(process.env.MONGO_URL_SESSIONS)
-         console.log("mongodb connected");
+         const con =  await mongoose.connect(process.env.MONGO_URL_SESSIONS, clientOptions)
+         await mongoose.connection.db.admin().command({ ping: 1 });
+         console.log("Pinged your deployment. You successfully connected to MongoDB!");
+        
          
     }
     catch(e){
