@@ -8,9 +8,9 @@ const {admin, auth, guest} = require('../controllers/Middlewares.js');
 const { indexOrder, showOrders, store } = require('../controllers/customers/OrderControllers.js');
 const { Store } = require('express-session');
 const { indexAdmin, updateStatusAdmin } = require('../controllers/admin/AdminControllers.js');
-
+const {menu} = require('../controllers/menu.js')
 router.get('/', indexHome )
-// router.get('/menu', menus)
+router.get('/menu', menu)
 router.get('/register',guest, register)
 router.post('/register', postRegister)
 router.get('/login', guest, login)

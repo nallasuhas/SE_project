@@ -10,27 +10,23 @@
         </div>
     </div>
 </section>
-<section class="menu container mx-auto py-8">
-    <h1 class="text-xl font-bold mb-8">All Pizzas</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-16">
-        <% pizzas.forEach(function(pizza) { %>
-        <div class="w-full md:w-64">
-            <img class="h-40 mb-4 mx-auto" src="/img/<%= pizza.image %>" alt="">
-            <div class="text-center">
-                <h2 class="mb-4 text-lg"><%= pizza.name %></h2>
-                <span class="size py-1 px-4 rounded-full uppercase text-xs"><%= pizza.size %></span>
-                <div class="flex items-center justify-around mt-6">
-                    <span class="font-bold text-lg">₹<%= pizza.price %></span>
-                    <!-- add to cart button -->
-                    <button data-pizza="<%= JSON.stringify(pizza) %>"
-                        class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                        <span>+</span>
-                        <span class="ml-4">Add</span>
-                    </button>
-                </div>
-            </div>
+ 
+<footer class="bg-gray-800 py-8">
+    <div class="container mx-auto text-center text-white">
+        <div class="mb-4">
+            <a href="#" class="text-lg font-semibold hover:text-gray-400">About Us</a>
+            <span class="mx-2">|</span>
+            <a href="#" class="text-lg font-semibold hover:text-gray-400">Contact</a>
+            <span class="mx-2">|</span>
+            <a href="#" class="text-lg font-semibold hover:text-gray-400">Privacy Policy</a>
         </div>
-        <% }) %>
-
+        <div>
+            <p>&copy; 2024 Pizza Delivery. All rights reserved.</p>
+        </div>
+        <div class="mt-4">
+            <a href="#" class="mx-2 hover:text-gray-400"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="mx-2 hover:text-gray-400"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="mx-2 hover:text-gray-400"><i class="fab fa-instagram"></i></a>
+        </div>
     </div>
-</section>
+</footer>
