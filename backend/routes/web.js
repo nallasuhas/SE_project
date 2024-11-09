@@ -3,14 +3,14 @@ const express = require('express');
 const { index, updateCart } = require('../controllers/CartControllers');
 const {indexHome} = require('../controllers/HomeControllers.js')
 const router = express.Router()
-
+// const menus = require('../views/menus.ejs')
 const {admin, auth, guest} = require('../controllers/Middlewares.js');
 const { indexOrder, showOrders, store } = require('../controllers/customers/OrderControllers.js');
 const { Store } = require('express-session');
 const { indexAdmin, updateStatusAdmin } = require('../controllers/admin/AdminControllers.js');
 
 router.get('/', indexHome )
-
+// router.get('/menu', menus)
 router.get('/register',guest, register)
 router.post('/register', postRegister)
 router.get('/login', guest, login)
