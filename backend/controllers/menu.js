@@ -5,3 +5,4 @@ async function menu(req,res){
     return res.render("menus",{pizzas: pizzas})
 }
 module.exports={menu}
+
