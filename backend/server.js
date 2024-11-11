@@ -19,6 +19,7 @@ const router = require('./routes/web.js')
 const PORT = process.env.PORT || 3000
 
  const connectDB = async () => {
+    console.log("hello")
     try{
          const con =  await mongoose.connect(process.env.MONGO_URL_SESSIONS)
          console.log("mongodb connected");
