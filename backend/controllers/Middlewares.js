@@ -4,6 +4,12 @@ function admin(req, res, next){
     }
     return res.redirect('/')
 }
+function delivery(req, res, next){
+    if(req.isAuthenticated() && req.user.role === 'delivery_partner'){
+       return  next()
+    }
+    return res.redirect('/')
+}
 
 function auth(req, res, next) {
     if(req.isAuthenticated()) {
@@ -19,4 +25,4 @@ function guest (req, res, next) {
     return res.redirect('/')
 }
 
-module.exports = {admin, auth, guest}
+module.exports = {admin, auth, guest, delivery}
