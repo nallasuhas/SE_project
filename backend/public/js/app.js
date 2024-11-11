@@ -32812,90 +32812,24 @@ socket.on('orderUpdated', function (data) {
 // }
 // },4000);
 
-
-
-
-// const carouselImages = document.getElementById('carousel-images');
-// const radios = document.querySelectorAll('.carousel-indicators input[type="radio"]');
-
-// let currentIndex = 0;
-// const totalImages = 4;
-// const intervalTime = 2000;
-
-// // Function to update carousel position and radio buttons
-// function updateCarousel() {
-//     carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
-//     radios[currentIndex].checked = true;
-// }
-
-// // Auto carousel rotation every 2 seconds
-// setInterval(() => {
-//     currentIndex = (currentIndex + 1) % totalImages; // Loop back to start after the last image
-//     updateCarousel();
-// }, intervalTime);
-
-// // Handle manual selection via radio buttons
-// radios.forEach((radio, index) => {
-//     radio.addEventListener('click', () => {
-//         currentIndex = index;
-//         updateCarousel();
-//     });
-// });
-
-
-
-// const carousel = document.getElementById('carousel');
-// const radioButtons = document.querySelectorAll('.radio-buttons input[type="radio"]');
-// let currentIndex = 0;
-
-// function updateCarousel() {
-//   // Update the transform of the carousel to show the current image
-//   carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-//   // Update the checked radio button
-//   radioButtons[currentIndex].checked = true;
-// }
-
-// function nextSlide() {
-//   currentIndex = (currentIndex + 1) % radioButtons.length;
-//   updateCarousel();
-// }
-
-// // Auto-change every 2 seconds
-// let interval = setInterval(nextSlide, 2000);
-
-// // Allow manual change via radio buttons
-// radioButtons.forEach((radio, index) => {
-//   radio.addEventListener('change', () => {
-//     currentIndex = index;
-//     updateCarousel();
-//     clearInterval(interval); // Stop auto-slide when manually changed
-//     interval = setInterval(nextSlide, 2000); // Restart auto-slide after 2 sec
-//   });
-// });
-
-
 let currentIndex = 0;
-const images = document.querySelectorAll('.carousel img');
-const radioButtons = document.querySelectorAll('.radio-buttons input');
-const totalImages = images.length;
+const intervalTime = 3000;  // 3 seconds for each slide
+const transitionDuration = 0.7; // 0.7 seconds for smooth transition
 
-function showImage(index) {
-  const carousel = document.querySelector('.carousel');
-  carousel.style.transform = `translateX(-${index * 100}%)`;
-  radioButtons[index].checked = true;
+function moveSlide() {
+    const images = document.querySelectorAll('.carousel-images img');
+    const totalImages = images.length;
+
+    // Update the currentIndex to move to the next image
+    currentIndex = (currentIndex + 1) % totalImages;
+
+    // Calculate the offset to move the images horizontally
+    const offset = -currentIndex * 100;  // Slide 100% for each image
+
+    // Apply the transform to shift the carousel images
+    document.querySelector('.carousel-images').style.transitionDuration = `${transitionDuration}s`; // Control transition speed
+    document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
 }
 
-function autoSlide() {
-  currentIndex = (currentIndex + 1) % totalImages;
-  showImage(currentIndex);
-}
-
-setInterval(autoSlide, 2000); // Change image every 2 seconds
-
-// Allow manual selection via radio buttons
-radioButtons.forEach((button, index) => {
-  button.addEventListener('click', () => {
-    currentIndex = index;
-    showImage(currentIndex);
-  });
-});
+// Automatically change the image every 3 seconds
+setInterval(moveSlide, intervalTime);
