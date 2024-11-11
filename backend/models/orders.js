@@ -6,7 +6,9 @@ const orderSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    items: { type: Object, required: true },
+    items: {
+        type: Object, required: true
+    },
     phone: { type: String, required: true},
     address: { type: String, required: true},
     paymentType: { type: String, default: 'COD'},

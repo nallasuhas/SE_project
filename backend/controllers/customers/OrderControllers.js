@@ -72,13 +72,25 @@ async function store(req, res) {
 
 
 async function indexOrder(req, res) {
-    //after user authentication
-    const orders = await Order.find({ customerId: req.user._id },
-        null,
-        { sort: { 'createdAt': -1 } } )
-    res.header('Cache-Control', 'no-store')
-    res.render('customers/orders', { orders: orders, moment: moment })
+    try {
+        // Fetch the orders for the logged-in user and populate the `items` field with details from the Menu collection
+        const orders = await Order.find({ customerId: req.user._id })
+              // Populate the `items` field with data from the Menu model
+            .sort({ createdAt: -1 });  // Sort orders by creation date in descending order
+
+        res.header('Cache-Control', 'no-store');
+      
+        
+        
+
+        // Render the orders page and pass the orders along with the moment.js instance
+        res.render('customers/orders', { orders: orders, moment: moment });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error fetching orders');
+    }
 }
+
 
 async function showOrders(req, res){
     const order = await Order.findById(req.params.id)

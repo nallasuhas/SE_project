@@ -2,18 +2,26 @@ import axios from "axios"
 import moment from "moment"
 import Noty from "noty"
 
-export function initAdmin(socket){
+export function initAdmin(socket, user){
     const orderTableBody = document.querySelector('#orderTableBody')
     let orders = []
     let markup
-    axios.get('/admin/orders', {
+    let url
+    if(user === 'admin'){ 
+      url = '/admin/orders'
+    }else if( user === 'delivery_partner'){
+        url = '/delivery/orders'
+    }
+    axios.get( url, {
         headers: {
             "X-Requested-With": "XMLHttpRequest"
         }
     }).then(res => {
-        orders = res.data
-        markup = generateMarkup(orders)
+        orders = res.data.ordersData
+        const role = res.data.role
+        markup = generateMarkup(orders, role)
         orderTableBody.innerHTML = markup
+       
     }).catch(err => {
         console.log(err)
     })
@@ -27,8 +35,13 @@ export function initAdmin(socket){
         }).join('')
       }
 
-      function generateMarkup(orders) {
-        return orders.map(order => {
+      function generateMarkup(orders, role) {
+
+        return orders.map(order => { 
+            
+           
+           
+            
             return `
                 <tr>
                 <td class="border px-4 py-2 text-green-900">
@@ -39,21 +52,21 @@ export function initAdmin(socket){
                 <td class="border px-4 py-2">${ order.address }</td>
                 <td class="border px-4 py-2">
                     <div class="inline-block relative w-64">
-                        <form action="/admin/order/status" method="POST">
+                        <form  action="${role === 'admin' ? '/admin/order/status' : '/delivery/order/status'}"  method="POST">
                             <input type="hidden" name="orderId" value="${ order._id }">
                             <select name="status" onchange="this.form.submit()"
                                 class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                                 <option value="order_placed"
-                                    ${ order.status === 'order_placed' ? 'selected' : '' }>
+                                    ${ order.status === 'order_placed' ? 'selected' : '' } ${role === 'delivery_partner' ? 'disabled' : ''}>
                                     Placed</option>
-                                <option value="confirmed" ${ order.status === 'confirmed' ? 'selected' : '' }>
+                                <option value="confirmed" ${ order.status === 'confirmed' ? 'selected' : '' } ${role === 'delivery_partner' ? 'disabled' : ''}>
                                     Confirmed</option>
-                                <option value="prepared" ${ order.status === 'prepared' ? 'selected' : '' }>
+                                <option value="prepared" ${ order.status === 'prepared' ? 'selected' : '' } ${role === 'delivery_partner' ? 'disabled' : ''}>
                                     Prepared</option>
-                                <option value="delivered" ${ order.status === 'delivered' ? 'selected' : '' }>
+                                <option value="delivered" ${ order.status === 'delivered' ? 'selected' : '' } ${role === 'admin' ? 'disabled' : ''}>
                                     Delivered
                                 </option>
-                                <option value="completed" ${ order.status === 'completed' ? 'selected' : '' }>
+                                <option value="completed" ${ order.status === 'completed' ? 'selected' : '' } ${role === 'delivery_partner' ? 'disabled' : ''}>
                                     Completed
                                 </option>
                             </select>

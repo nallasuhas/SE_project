@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 :root {
   --primary:#EEBF00;
   --secondary:#232B38;
@@ -9,6 +10,10 @@
   --heaven:#FFFFFF;
   --footer:#2D333F;
 }
+
+
+
+
 .noty_layout_mixin,
 #noty_layout__centerRight,
 #noty_layout__centerLeft,

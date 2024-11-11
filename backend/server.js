@@ -63,6 +63,8 @@ app.use(flash())
 app.use((req, res, next) => {
     res.locals.session = req.session
     res.locals.user = req.user
+   
+    
     next()
 })
 
@@ -90,5 +92,5 @@ eventEmitter.on('orderUpdated', (data) => {
 })
 
 eventEmitter.on('orderPlaced', (data) => {
-    io.to('adminRoom').emit('orderPlaced', data)
+    io.to('adminRoom').to('deliveryRoom').emit('orderPlaced', data)
 })
