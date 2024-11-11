@@ -1,9 +1,9 @@
 const Order = require('../../models/orders')
 
-async function indexAdmin(req, res) {
+async function indexDelivery(req, res) {
   try {
       // Fetch orders that are not completed, sorted by creation date (descending order)
-      const orders = await Order.find({ status: { $ne: 'completed' } })
+      const orders = await Order.find({ status:  { $nin: ['completed', 'delivered'] } })
                                 .sort({ 'createdAt': -1 })
                                 .populate('customerId', '-password')
                                 .exec(); 
@@ -17,9 +17,11 @@ async function indexAdmin(req, res) {
 
       // If the request is an AJAX request (XHR)
       if (req.xhr) {
+        
+        
           return res.json(resData);  // Send the orders as JSON
       } else {
-          return res.render('admin/orders');  // Render the admin orders page
+          return res.render('admin/deliveryOrders');  // Render the admin orders page
       }
   } catch (err) {
       // Handle any errors that may occur
@@ -29,7 +31,7 @@ async function indexAdmin(req, res) {
 }
 
 
-async function updateStatusAdmin(req, res) {
+async function updateStatusDelivery(req, res) {
   try {
       // Update the order's status in the database
       await Order.updateOne(
@@ -42,15 +44,15 @@ async function updateStatusAdmin(req, res) {
       eventEmitter.emit('orderUpdated', { id: req.body.orderId, status: req.body.status });
 
       // Redirect to the admin orders page
-      return res.redirect('/admin/orders');
+      return res.redirect('/delivery/orders');
   } catch (err) {
       // Handle any errors that occur during the update operation
       console.error(err);
-      return res.redirect('/admin/orders');
+      return res.redirect('/delivery/orders');
   }
 }
 
 
 
 
-module.exports = {indexAdmin, updateStatusAdmin}
+module.exports = {indexDelivery, updateStatusDelivery}

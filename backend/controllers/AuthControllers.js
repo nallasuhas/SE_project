@@ -3,6 +3,9 @@ const bcrypt = require('bcrypt')
 const passport = require('../Auth/passport.js')
 
 const _getRedirectUrl = (req) => {
+    if(req.user.role === 'delivery_partner') {
+        return '/delivery/orders'
+    }
     return req.user.role === 'admin' ? '/admin/orders' : '/customer/orders'
 }
 
