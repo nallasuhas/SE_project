@@ -705,7 +705,6 @@ section.our-services .service-card .icon{
   transform:translateX(-50%);
 }
 section.our-services .service-card h2{
-  font-family: "Raleway-bold";
   font-size: 1.3rem;
   margin-bottom:1rem;
 }
@@ -726,7 +725,6 @@ section.about-meal img{
   width:85%;
 }
 section.about-meal h2{
-  font-family: "Raleway-bold";
   font-size:1.4rem;
   color:var(--secondary);
   margin-bottom:2rem;
@@ -737,6 +735,7 @@ section.about-meal p{
   margin-bottom:4rem;
 }
 /* end of section about-meal */
+/* starting of footer*/
  footer {
   background: var(--footer);
   padding: 2rem 0; /* Reduce padding to 2rem */
@@ -857,7 +856,6 @@ section.contact-us .contact-info > div > div > div{
   flex-direction: column;
 }
 section.contact-us .contact-info > div > div > div span:first-child{
-  font-family: "Raleway-bold";
   margin-bottom:0.25rem;
 }
 section.contact-us .map{
@@ -876,7 +874,6 @@ section.contact-us .contact-info a:hover {
 }
 /*kindha lines kosam*/
 .section-heading{
-  font-family:"Raleway-bold";
   text-align:center;
   Position:relative;
   margin-bottom:6rem;
@@ -892,4 +889,18 @@ section.contact-us .contact-info a:hover {
   background-position: center;
   position:absolute;
   bottom:-40px;
+}
+.w-full{
+  background: lightgray;
+  border-radius: 5px;
+  margin-bottom: 13px;
+  box-shadow: 5px 5px 0px rgb(69, 68, 68);
+}
+
+/* .w-full ::after{
+  box-shadow: 5px 5px 0px rgb(69, 68, 68);
+} */
+
+.h-40 {
+  margin-top: 13px;
 }
