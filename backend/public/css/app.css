@@ -559,32 +559,15 @@ section.status {
   margin-bottom: 200px;
 }
 
+
 .section {
   position: relative;
-  width: 300px;
-  overflow: hidden;
-  margin: 20px auto;
-}
-.carousel {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.5s ease-in-out;
-}
-.carousel img {
-  width: 100%;
-  height: 100%;
-}
-.radio-buttons {
-  display: flex;
+  margin-top: 20px auto;
+  min-height: 100vh;
   justify-content: center;
-  margin-top: 10px; 
+  align-items: center;
 }
 
-.radio-buttons input {
-  margin: 0 5px;
-  cursor: pointer;
-}
 
 .footer {
   margin-bottom: 0px;
@@ -674,6 +657,10 @@ footer .box:nth-child(3) ul li{
 
  /* section our-services */
 
+.our-services .section-heading{
+  font-size: 26px;
+}
+
 section.our-services{
   background:var(--light);
   position: center;
@@ -688,6 +675,8 @@ section.our-services .card-wrapper{
   align-items: center;
 }
 section.our-services .service-card{
+  width: 300px; /* Increase this value as needed */
+  height: 500px; /* Increase this value as needed */
   background:var(--heaven);
   text-align: center;
   padding:2rem;
@@ -903,4 +892,10 @@ section.contact-us .contact-info a:hover {
 
 .h-40 {
   margin-top: 13px;
+}
+
+.about-meal-wrap{
+  justify-content: center;
+  align-items: center;
+  margin-left: 13vh;
 }
