@@ -4,6 +4,7 @@ const { index, updateCart } = require('../controllers/CartControllers');
 const {indexHome} = require('../controllers/HomeControllers.js')
 const router = express.Router()
 
+
 const {admin, auth, guest, delivery} = require('../controllers/Middlewares.js');
 const { indexOrder, showOrders, store } = require('../controllers/customers/OrderControllers.js');
 const { Store } = require('express-session');
@@ -14,6 +15,7 @@ const { indexDelivery } = require('../controllers/admin/DeliveryControllers.js')
 
 router.get('/', indexHome )
 router.get('/menu', menu)
+
 
 router.get('/register',guest, register)
 router.post('/register', postRegister)

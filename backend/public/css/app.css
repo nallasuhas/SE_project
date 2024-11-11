@@ -11,9 +11,6 @@
   --footer:#2D333F;
 }
 
-
-
-
 .noty_layout_mixin,
 #noty_layout__centerRight,
 #noty_layout__centerLeft,
@@ -511,7 +508,11 @@ section.status {
   margin-top: 8px;
 }
 
-@media (max-width: 1060px) {
+.conatainer {
+  padding: 0 30px;
+}
+
+
   .container {
     max-width: 90%;
   }
@@ -521,7 +522,7 @@ section.status {
     overflow-x: auto;
     white-space: nowrap;
   }
-}
+
 
 @media (max-width: 768px) {
   .status-box ul li span::before {
@@ -553,6 +554,7 @@ section.status {
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
+
 
 /*contact us*/
 section.contact-us{
@@ -601,6 +603,7 @@ section.contact-us .contact-info a:hover {
 
 /* starting of footer*/
 footer {
+
   background: var(--footer);
   padding: 2rem 0; /* Reduce padding to 2rem */
 }
@@ -674,6 +677,7 @@ footer .box ul li a img {
 }
 
 /* end of footer */
+
 .btn{
   padding:0.75rem 0.75rem;
   border-radius:4px;
@@ -693,3 +697,85 @@ footer .box ul li a img {
   color: var(--secondary); 
   border: 1px solid var(--secondary);
 }
+
+/*contact us*/
+section.contact-us{
+  padding-top:0;
+  padding-bottom: 0;
+}
+section.contact-us .contact-info-wrapper {
+  padding:4rem 0;
+  flex:1;
+}
+section.contact-us .contact-info{
+  display:flex;
+  justify-content: center;
+}
+section.contact-us .contact-info > div > div {
+  display:flex;
+  align-items:center;
+  margin-bottom:2rem;
+}
+section.contact-us .contact-info > div > div img{
+  margin-right: 1rem;
+}
+section.contact-us .contact-info > div > div > div{
+  display:flex;
+  flex-direction: column;
+}
+section.contact-us .contact-info > div > div > div span:first-child{
+  margin-bottom:0.25rem;
+}
+section.contact-us .map{
+  flex:1;
+ 
+}
+section.contact-us .contact-info a {
+  color: inherit; /* Ensure the color matches the surrounding text */
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer; /* Change the cursor to pointer when hovering */
+}
+
+section.contact-us .contact-info a:hover {
+  color: var(--primary); /* Optional: Change color on hover */
+}
+/*kindha lines kosam*/
+.section-heading{
+  text-align:center;
+  Position:relative;
+  margin-bottom:6rem;
+  margin-left: 4rem;
+}
+.section-heading:after{
+  content:'';
+  display:block;
+  width: 100%;
+  height:30px;
+  background-image:url(/icons/hr.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  position:absolute;
+  bottom:-40px;
+}
+.w-full{
+  background: lightgray;
+  border-radius: 5px;
+  margin-bottom: 13px;
+  box-shadow: 5px 5px 0px rgb(69, 68, 68);
+}
+
+/* .w-full ::after{
+  box-shadow: 5px 5px 0px rgb(69, 68, 68);
+} */
+
+.h-40 {
+  margin-top: 13px;
+}
+
+.about-meal-wrap{
+  justify-content: center;
+  align-items: center;
+  margin-left: 13vh;
+}
+

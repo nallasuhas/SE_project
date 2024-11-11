@@ -20,6 +20,7 @@
         </div>
         <div>
             <ul class="flex items-center">
+
                 <% if ( user && user.role !== 'delivery_partner') { %>
                     <li class="ml-6">
                         <a href="/menu">
@@ -36,6 +37,7 @@
                     </li>
                 <% } %> 
                 
+
                 <% if(user) { %>
                     <li class="ml-6 flex items-center space-x-4">
                         <div class="flex items-center gap-4">
