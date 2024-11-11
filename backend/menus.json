@@ -1,65 +1,205 @@
-[{
-  "_id": {
-    "$oid": "5eee651f739f8c674fd736ee"
+[
+  {
+    "_id": { "$oid": "5fff1111a27a66807cf2bea0" },
+    "name": "Hyderabadi Dum Biryani",
+    "image": "dumbiryani.png",
+    "price": "300",
+    "size": "large"
   },
-  "name": "Margherita",
-  "image": "pizza.png",
-  "price": "250",
-  "size": "small"
-},{
-  "_id": {
-    "$oid": "5eee6671a27a66807cf2bea3"
+  {
+    "_id": { "$oid": "5fff1112a27a66807cf2bea1" },
+    "name": "Veg Dum Biryani",
+    "image": "vegbiryani.png",
+    "price": "250",
+    "size": "large"
   },
-  "name": "Marinara",
-  "image": "pizza.png",
-  "price": "300",
-  "size": "medium"
-},{
-  "_id": {
-    "$oid": "5eee6692a27a66807cf2bea4"
+  {
+    "_id": { "$oid": "5fff1113a27a66807cf2bea2" },
+    "name": "Zafrani Biryani",
+    "image": "zafranibiryani.png",
+    "price": "400",
+    "size": "large"
   },
-  "name": "Carbonara",
-  "image": "pizza.png",
-  "price": "200",
-  "size": "small"
-},{
-  "_id": {
-    "$oid": "5eee66a5a27a66807cf2bea5"
+  {
+    "_id": { "$oid": "5fff1114a27a66807cf2bea3" },
+    "name": "Kacchi Gosht Biryani",
+    "image": "kacchibiryani.png",
+    "price": "450",
+    "size": "large"
   },
-  "name": "Americana",
-  "image": "pizza.png",
-  "price": "500",
-  "size": "large"
-},{
-  "_id": {
-    "$oid": "5eee66c4a27a66807cf2bea6"
+  {
+    "_id": { "$oid": "5fff1115a27a66807cf2bea4" },
+    "name": "Shikampuri Kebab",
+    "image": "shikampurikebab.png",
+    "price": "150",
+    "size": "small"
   },
-  "name": "Chicken Mushroom",
-  "image": "pizza.png",
-  "price": "350",
-  "size": "medium"
-},{
-  "_id": {
-    "$oid": "5eee66cfa27a66807cf2bea7"
+  {
+    "_id": { "$oid": "5fff1116a27a66807cf2bea5" },
+    "name": "Pathar Ka Gosht",
+    "image": "patharkagosht.png",
+    "price": "250",
+    "size": "medium"
   },
-  "name": "Paneer pizza",
-  "image": "pizza.png",
-  "price": "200",
-  "size": "small"
-},{
-  "_id": {
-    "$oid": "5eee66eea27a66807cf2bea8"
+  {
+    "_id": { "$oid": "5fff1117a27a66807cf2bea6" },
+    "name": "Paneer Tikka",
+    "image": "paneertikka.png",
+    "price": "200",
+    "size": "medium"
   },
-  "name": "Vegies pizza",
-  "image": "pizza.png",
-  "price": "600",
-  "size": "large"
-},{ 
-  "_id": {
-    "$oid": "5eee6717a27a66807cf2bea9"
+  {
+    "_id": { "$oid": "5fff1118a27a66807cf2bea7" },
+    "name": "Veg Shikampuri",
+    "image": "vegshikampuri.png",
+    "price": "120",
+    "size": "small"
   },
-  "name": "Pepperoni",
-  "image": "pizza.png",
-  "price": "500",
-  "size": "medium"
-}]
+  {
+    "_id": { "$oid": "5fff1119a27a66807cf2bea8" },
+    "name": "Nihari Gosht",
+    "image": "niharigosht.png",
+    "price": "400",
+    "size": "large"
+  },
+  {
+    "_id": { "$oid": "5fff1110a27a66807cf2bea9" },
+    "name": "Hyderabadi Mutton Korma",
+    "image": "muttonkorma.png",
+    "price": "350",
+    "size": "large"
+  },
+  {
+    "_id": { "$oid": "5fff1111a27a66807cf2beaa" },
+    "name": "Mirchi Ka Salan",
+    "image": "mirchikasalan.png",
+    "price": "180",
+    "size": "regular"
+  },
+  {
+    "_id": { "$oid": "5fff1112a27a66807cf2beab" },
+    "name": "Bagara Baingan",
+    "image": "bagarabaingan.png",
+    "price": "160",
+    "size": "regular"
+  },
+  {
+    "_id": { "$oid": "5fff1113a27a66807cf2beac" },
+    "name": "Bagara Rice",
+    "image": "bagararice.png",
+    "price": "150",
+    "size": "regular"
+  },
+  {
+    "_id": { "$oid": "5fff1114a27a66807cf2bead" },
+    "name": "Khichdi with Khatta and Keema",
+    "image": "khichdi.png",
+    "price": "200",
+    "size": "large"
+  },
+  {
+    "_id": { "$oid": "5fff1115a27a66807cf2beae" },
+    "name": "Rumali Roti",
+    "image": "rumaliroti.png",
+    "price": "30",
+    "size": "single"
+  },
+  {
+    "_id": { "$oid": "5fff1116a27a66807cf2beaf" },
+    "name": "Naan",
+    "image": "naan.png",
+    "price": "40",
+    "size": "single"
+  },
+  {
+    "_id": { "$oid": "5fff1117a27a66807cf2beb0" },
+    "name": "Paratha",
+    "image": "paratha.png",
+    "price": "50",
+    "size": "single"
+  },
+  {
+    "_id": { "$oid": "5fff1118a27a66807cf2beb1" },
+    "name": "Hyderabadi Haleem",
+    "image": "haleem.png",
+    "price": "300",
+    "size": "medium"
+  },
+  {
+    "_id": { "$oid": "5fff1119a27a66807cf2beb2" },
+    "name": "Keema Samosa",
+    "image": "keemasamosa.png",
+    "price": "100",
+    "size": "small"
+  },
+  {
+    "_id": { "$oid": "5fff1110a27a66807cf2beb3" },
+    "name": "Pani Puri",
+    "image": "panipuri.png",
+    "price": "50",
+    "size": "plate"
+  },
+  {
+    "_id": { "$oid": "5fff1111a27a66807cf2beb4" },
+    "name": "Dahi Puri",
+    "image": "dahipuri.png",
+    "price": "60",
+    "size": "plate"
+  },
+  {
+    "_id": { "$oid": "5fff1112a27a66807cf2beb5" },
+    "name": "Double Ka Meetha",
+    "image": "doublekameetha.png",
+    "price": "120",
+    "size": "small"
+  },
+  {
+    "_id": { "$oid": "5fff1113a27a66807cf2beb6" },
+    "name": "Qubani Ka Meetha",
+    "image": "qubanikameetha.png",
+    "price": "150",
+    "size": "small"
+  },
+  {
+    "_id": { "$oid": "5fff1114a27a66807cf2beb7" },
+    "name": "Sheer Khurma",
+    "image": "sheerkhurma.png",
+    "price": "100",
+    "size": "small"
+  },
+  {
+    "_id": { "$oid": "5fff1115a27a66807cf2beb8" },
+    "name": "Gulab Jamun",
+    "image": "gulabjamun.png",
+    "price": "80",
+    "size": "plate"
+  },
+  {
+    "_id": { "$oid": "5fff1116a27a66807cf2beb9" },
+    "name": "Irani Chai",
+    "image": "iranichai.png",
+    "price": "40",
+    "size": "cup"
+  },
+  {
+    "_id": { "$oid": "5fff1117a27a66807cf2beba" },
+    "name": "Masala Soda",
+    "image": "masalasoda.png",
+    "price": "50",
+    "size": "glass"
+  },
+  {
+    "_id": { "$oid": "5fff1118a27a66807cf2bebb" },
+    "name": "Sweet Lassi",
+    "image": "sweetlassi.png",
+    "price": "60",
+    "size": "glass"
+  },
+  {
+    "_id": { "$oid": "5fff1119a27a66807cf2bebc" },
+    "name": "Falooda",
+    "image": "falooda.png",
+    "price": "80",
+    "size": "glass"
+  }
+]
