@@ -35,6 +35,12 @@ addToCart.forEach((btn) => {
     })
 })
 
+
+
+
+
+
+
 // Remove alert message after X seconds
 const alertMsg = document.querySelector('#success-alert')
 if(alertMsg) {
@@ -97,9 +103,19 @@ if(order) {
 
 let adminAreaPath = window.location.pathname
 if(adminAreaPath.includes('admin')) {
-    initAdmin(socket)
+    const user = 'admin' 
+    initAdmin(socket, user )
     socket.emit('join', 'adminRoom')
 }
+let deliveryAreaPath = window.location.pathname
+if(deliveryAreaPath.includes('delivery')) {
+    const user = 'delivery_partner'
+    initAdmin(socket, user) 
+    socket.emit('join', 'deliveryRoom')
+    
+}
+
+
 
 socket.on('orderUpdated', (data) => {
     const updatedOrder = { ...order }
