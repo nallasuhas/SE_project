@@ -91,6 +91,10 @@ function postLogin(req, res,next){
         })
     })(req, res, next)
 }
+
+
+
+
 // logout
 function logout(req, res) {
     req.logout((err) => {

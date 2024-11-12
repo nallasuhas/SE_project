@@ -11,6 +11,8 @@ async function indexDelivery(req, res) {
     const role = req.user.role
     const ordersData = [...orders]
     
+    
+    
      const resData = {ordersData, role}
     
      
@@ -34,14 +36,18 @@ async function indexDelivery(req, res) {
 async function updateStatusDelivery(req, res) {
   try {
       // Update the order's status in the database
-      await Order.updateOne(
+       await Order.updateOne(
           { _id: req.body.orderId },  // Find the order by its ID
-          { status: req.body.status }  // Update the status field
+          { status: req.body.status, paymentStatus: true }, // Update the status field
       );
+      const order = await Order.findById(req.body.orderId )
+     
+      
+      
 
       // Emit the event to notify other parts of the system (e.g., WebSockets)
       const eventEmitter = req.app.get('eventEmitter');
-      eventEmitter.emit('orderUpdated', { id: req.body.orderId, status: req.body.status });
+      eventEmitter.emit('orderUpdated', { id: req.body.orderId, status: req.body.status, paymentStatus: true });
 
       // Redirect to the admin orders page
       return res.redirect('/delivery/orders');

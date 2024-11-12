@@ -121,6 +121,7 @@ socket.on('orderUpdated', (data) => {
     const updatedOrder = { ...order }
     updatedOrder.updatedAt = moment().format()
     updatedOrder.status = data.status
+    updatedOrder.paymentStatus = data.paymentStatus
     updateStatus(updatedOrder)
     new Noty({
         type: 'success',
