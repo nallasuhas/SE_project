@@ -10,6 +10,9 @@ async function indexAdmin(req, res) {
 
     const role = req.user.role
     const ordersData = [...orders]
+   
+    
+    
     
      const resData = {ordersData, role}
     

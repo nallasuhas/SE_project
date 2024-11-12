@@ -3,6 +3,7 @@ const express = require('express');
 const { index, updateCart } = require('../controllers/CartControllers');
 const {indexHome} = require('../controllers/HomeControllers.js')
 const router = express.Router()
+const passport = require('passport')
 
 
 const {admin, auth, guest, delivery} = require('../controllers/Middlewares.js');
@@ -11,7 +12,7 @@ const { Store } = require('express-session');
 const { indexAdmin, updateStatusAdmin } = require('../controllers/admin/AdminControllers.js');
 const {menu} = require('../controllers/Menu.js')
 const {getProfile, editProfile, updateProfile} = require('../controllers/ProfileControllers.js');
-const { indexDelivery } = require('../controllers/admin/DeliveryControllers.js');
+const { indexDelivery, updateStatusDelivery } = require('../controllers/admin/DeliveryControllers.js');
 
 router.get('/', indexHome )
 router.get('/menu', menu)
@@ -22,6 +23,15 @@ router.post('/register', postRegister)
 router.get('/login', guest, login)
 router.post('/login', postLogin)
 router.post('/logout', logout )
+router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }) );
+router.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    (req, res) => {
+      // Successful login, redirect to the home page or dashboard
+      res.redirect('/');
+    }
+  );
+  
 
 router.get('/profile/edit', editProfile)
 router.post('/profile/edit', updateProfile)
@@ -40,7 +50,7 @@ router.get('/admin/orders', admin, indexAdmin)
 router.post('/admin/order/status', admin, updateStatusAdmin)
 
 router.get('/delivery/orders', delivery, indexDelivery )
-router.post('/delivery/order/status', delivery, updateStatusAdmin)
+router.post('/delivery/order/status', delivery, updateStatusDelivery)
 
 
 
