@@ -27,7 +27,7 @@ function updateCart(req, res){
         cart.totalQty = cart.totalQty + 1
         cart.totalPrice =  cart.totalPrice + req.body.price
     }
-   console.log(cart.items);
+  
    
      
     return res.json({ totalQty: req.session.cart.totalQty })
