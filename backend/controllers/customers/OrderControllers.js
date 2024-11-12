@@ -25,7 +25,7 @@ async function store(req, res) {
         // Populate the customerId field
         const placedOrder = await Order.populate(result, { path: 'customerId' });
 
-        console.log('Order populated');
+        
 
         // If payment type is card, proceed with Stripe payment
         if (paymentType === 'card') {
