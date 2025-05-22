@@ -1,6 +1,7 @@
 require("dotenv").config()
 const express = require("express")
 const app = express()
+app.set('trust proxy', 1); // trust first proxy
 const ejs = require('ejs')
 const path = require('path')
 const mongoose = require('mongoose')
@@ -37,6 +38,12 @@ const clientOptions = { serverApi: { version: '1', strict: true, deprecationErro
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+app.use((req, res, next) => {
+  if (process.env.NODE_ENV === 'production' && req.headers['x-forwarded-proto'] !== 'https') {
+    return res.redirect('https://' + req.headers.host + req.url);
+  }
+  next();
+});
 
 const eventEmitter = new Emitter();
 app.set('eventEmitter', eventEmitter)
